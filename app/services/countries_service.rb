@@ -1,4 +1,5 @@
-class CountryService
+class CountriesService
+  #TODO: Implement repository pattern?
   def get_countries
     Country.all
   end
@@ -10,19 +11,21 @@ class CountryService
     nil
   end
 
-  def create_country(params)
-    existing_country = Country.find_by(name: params[:name])
+  def create_country(country_data)
+    existing_country = Country.find_by(name: country_data[:name])
 
     if existing_country
       raise ArgumentError.new("Country already exists")
     end
 
-    Country.create(params)
+    Country.create(country_data)
+
+
   end
 
-  def update_country(id, params)
+  def update_country(id, country_data)
     country = Country.find(id)
-    country.update(params)
+    country.update(country_data)
 
     country
 

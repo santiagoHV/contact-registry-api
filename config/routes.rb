@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :countries, only: [:index, :show, :create, :update, :destroy]
       resources :cities, only: [:index, :show, :create, :update, :destroy]
-      resources :users, only: [:index, :show, :create, :update, :destroy]
+      resources :states, only: [:index, :show, :create, :update, :destroy]
+      resources :contacts, only: [:index, :show, :create, :update, :destroy]
+
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
