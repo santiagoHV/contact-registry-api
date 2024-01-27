@@ -90,101 +90,12 @@
           <textarea name="description" class="form-control" id="desc-input" type="textarea"></textarea>
         </div>
       </div>
-      <button class="btn btn-primary mt-3" type="button" onclick="onSubmit()">Enviar</button>
+      <button
+        class="btn btn-primary mt-3"
+        type="button"
+        onclick="onSubmit()"
+        id="submit-button"
+      >Enviar</button>
     </div>
   </form>
 </div>
-
-
-
-<script>
-  const countrySelect = document.getElementById('country_select');
-  const stateSelect = document.getElementById('state_select');
-  const citySelect = document.getElementById('city_select');
-  const submitButton = document.querySelector('button[type="submit"]');
-  const form = document.querySelector('form');
-
-  countrySelect.addEventListener('change', async () => {
-    const countryId = countrySelect.value;
-
-    if (countryId) {
-        try{
-            const response = await fetch(`/api/v1/countries/${countryId}/states`);
-            const states = await response.json();
-            console.log(states);
-
-            states.forEach(state => {
-                const option = document.createElement('option');
-                option.value = state.id;
-                option.text = state.name;
-                stateSelect.add(option);
-            });
-
-            stateSelect.disabled = false;
-        } catch (e) {
-          console.log(e);
-        }
-    } else {
-      stateSelect.innerHTML = '<option value="">Select State</option>';
-      citySelect.innerHTML = '<option value="">Select City</option>';
-
-      stateSelect.disabled = true;
-      citySelect.disabled = true;
-    }
-  })
-
-  stateSelect.addEventListener('change', async () => {
-    const stateId = stateSelect.value;
-
-    if (stateId) {
-        try{
-            const response = await fetch(`/api/v1/states/${stateId}/cities`);
-            const cities = await response.json();
-            console.log(cities);
-
-            cities.forEach(city => {
-                const option = document.createElement('option');
-                option.value = city.id;
-                option.text = city.name;
-                citySelect.add(option);
-            });
-
-            citySelect.disabled = false;
-        } catch (e) {
-          console.log(e);
-        }
-    } else {
-      citySelect.innerHTML = '<option value="">Select City</option>';
-      citySelect.disabled = true;
-    }
-  })
-
-  const onSubmit = async (event) => {
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      data.country_id = parseInt(data.country_id)
-
-
-      try{
-          const response = await fetch('/api/v1/contacts', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(data)
-          })
-
-          const result = await response.json();
-          console.log(result);
-
-          if (response.status === 201) {
-              alert('Contacto creado exitosamente');
-          } else {
-              alert('Error al crear contacto');
-          }
-      }catch (e) {
-          console.log(e);
-      }
-  }
-</script>

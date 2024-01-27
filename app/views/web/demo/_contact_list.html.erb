@@ -14,7 +14,7 @@
   </thead>
   <tbody>
     <% @contacts.each do |contact| %>
-      <tr>
+      <tr id="contact-<%= contact.id %>">
         <td><%= contact.id %></td>
         <td><%= contact.name %></td>
         <td><%= contact.lastname %></td>
@@ -23,10 +23,10 @@
         <td><%= contact.address_detail %></td>
         <td><%= contact.city.name %></td>
         <td>
-          <button class="btn btn-primary">Actualizar</button>
+          <button class="btn btn-primary" onclick="onUpdate(<%= contact.id %>)">Actualizar</button>
         </td>
         <td>
-          <button class="btn btn-danger">Borrar</button>
+          <button class="btn btn-danger" onclick="onDelete(<%= contact.id %>)">Borrar</button>
         </td>
       </tr>
     <% end %>

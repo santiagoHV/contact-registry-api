@@ -11,6 +11,8 @@ gem "sprockets-rails"
 gem 'pg'
 gem 'rswag-api'
 gem 'rswag-ui'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 

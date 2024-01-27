@@ -1,0 +1,33 @@
+<% @grouped_contacts.each do |city_group| %>
+  <h2><%= city_group[:city] %></h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Fecha de nacimiento</th>
+      <th>Dirección</th>
+      <th>Casa/apartamento</th>
+      <th>Actualizar</th>
+      <th>Borrar</th>
+    </tr>
+    </thead>
+    <% city_group[:contacts].each do |contact| %>
+      <tr id="contact-<%= contact[:id] %>">
+        <td><%= contact[:id] %></td>
+        <td><%= contact[:name] %></td>
+        <td><%= contact[:lastname] %></td>
+        <td><%= contact[:birthdate] %></td>
+        <td><%= contact[:address] %></td>
+        <td><%= contact[:detail] %></td>
+        <td>
+          <button class="btn btn-primary">Actualizar</button>
+        </td>
+        <td>
+          <button class="btn btn-danger" onclick="onDelete(<%= contact[:id] %>)">Borrar</button>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

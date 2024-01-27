@@ -13,7 +13,9 @@ Rails.application.routes.draw do
       resources :cities, only: [:index, :show, :create, :update, :destroy] do
       end
 
-      resources :contacts, only: [:index, :show, :create, :update, :destroy]
+      resources :contacts, only: [:index, :show, :create, :update, :destroy] do
+        get "grouped", on: :collection, to: "contacts#grouped_contacts"
+      end
 
     end
   end
@@ -26,6 +28,7 @@ Rails.application.routes.draw do
 
   namespace :web do
     get "demo", to: "demo#index"
+    get "demo/generate_pdf", to: "demo#generate_pdf"
   end
 
 end

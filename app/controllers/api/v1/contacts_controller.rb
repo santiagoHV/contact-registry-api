@@ -14,8 +14,15 @@ class Api::V1::ContactsController < ApplicationController
     render json: {error: e.message}, status: :internal_server_error
   end
 
-  def show(id)
-    contact = @contacts_service.get_contact(id)
+  def grouped_contacts
+    contacts = @contacts_service.get_grouped_contacts_by_city
+    render json: contacts, status: :ok
+  rescue StandardError => e
+    render json: {error: e.message}, status: :internal_server_error
+  end
+
+  def show
+    contact = @contacts_service.get_contact(params[:id])
     if contact
       render json: contact, status: :ok
     else
@@ -60,11 +67,11 @@ class Api::V1::ContactsController < ApplicationController
     render json: {error: e.message}, status: :internal_server_error
   end
 
-  def delete(id)
-    contact = @contacts_service.delete_contact(id)
+  def destroy
+    contact = @contacts_service.delete_contact(params[:id])
 
     if contact
-      render json: contact, status: :ok
+      render json: contact, status: :no_content
     else
       render json: {error: "Contact not found"}, status: :not_found
     end

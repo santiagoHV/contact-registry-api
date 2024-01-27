@@ -106,6 +106,8 @@ class Api::V1::CountriesController < ApplicationController
 
   private
   def validate_params
+    puts "Validating params"
+    puts country_params
     validator = CountryParamsValidator.new(country_params)
     validator.validate
   rescue ArgumentError => e

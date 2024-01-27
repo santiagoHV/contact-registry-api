@@ -3,22 +3,44 @@
     <div class="col-md-5">
       <%= render 'contact_form' %>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-7" id="table-section">
       <%= render 'contact_list' %>
-
-      <div class="row">
-        <div class="col-4">
-          <button class="btn btn-secondary">Ver contactos en JSON</button>
-        </div>
-        <div class="col-4">
-          <button class="btn btn-secondary">Ver agrupados por ciudad</button>
-        </div>
-        <div class="col-4">
-          <button class="btn btn-secondary">Exportar lista a PDF</button>
-        </div>
+    </div>
+    <div class="offset-5 col-7 row">
+      <div class="col-4">
+        <button
+          class="btn btn-secondary"
+          data-bs-toggle="modal" data-bs-target="#jsonModal"
+        >Ver contactos en JSON</button>
+      </div>
+      <div class="col-4">
+        <button class="btn btn-secondary" id="show-more-button">Ver agrupados por ciudad</button>
+      </div>
+      <div class="col-4">
+        <a class="btn btn-secondary" href="/web/demo/generate_pdf.pdf">Exportar lista a PDF</a>
       </div>
     </div>
   </div>
 </div>
 
-<!--<pre><%#= JSON.pretty_generate(@countries.as_json, indent: '  ') %></pre>-->
+<%= render 'json_modal' %>
+<script>
+  const showMoreButton = document.getElementById('show-more-button')
+  const tableSection = document.getElementById('table-section')
+  let showMode = 'all'
+
+  showMoreButton.addEventListener('click', () => {
+    if (showMode === 'all') {
+      showMode = 'grouped'
+      showMoreButton.innerText = 'Ver todos los contactos'
+      tableSection.innerHTML = '<%= j render "contact_grouped_list" %>'
+
+    } else {
+      showMode = 'all'
+      showMoreButton.innerText = 'Ver agrupados por ciudad'
+      tableSection.innerHTML = '<%= j render "contact_list" %>'
+
+    }
+  })
+</script>
+<%= javascript_include_tag 'crudActions' %>
