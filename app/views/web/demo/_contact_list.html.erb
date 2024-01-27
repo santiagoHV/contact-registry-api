@@ -1,0 +1,34 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Fecha de nacimiento</th>
+      <th>Dirección</th>
+      <th>Casa/apartamento</th>
+      <th>Ciudad</th>
+      <th>Actualizar</th>
+      <th>Borrar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.id %></td>
+        <td><%= contact.name %></td>
+        <td><%= contact.lastname %></td>
+        <td><%= contact.birthdate %></td>
+        <td><%= contact.address %></td>
+        <td><%= contact.address_detail %></td>
+        <td><%= contact.city.name %></td>
+        <td>
+          <button class="btn btn-primary">Actualizar</button>
+        </td>
+        <td>
+          <button class="btn btn-danger">Borrar</button>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

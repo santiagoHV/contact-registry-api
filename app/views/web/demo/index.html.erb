@@ -1,4 +1,24 @@
-<h1> hello world</h1>
-<%= render 'contact_form' %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5">
+      <%= render 'contact_form' %>
+    </div>
+    <div class="col-md-7">
+      <%= render 'contact_list' %>
 
-<pre><%= JSON.pretty_generate(@countries.as_json, indent: '  ') %></pre>
+      <div class="row">
+        <div class="col-4">
+          <button class="btn btn-secondary">Ver contactos en JSON</button>
+        </div>
+        <div class="col-4">
+          <button class="btn btn-secondary">Ver agrupados por ciudad</button>
+        </div>
+        <div class="col-4">
+          <button class="btn btn-secondary">Exportar lista a PDF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<pre><%#= JSON.pretty_generate(@countries.as_json, indent: '  ') %></pre>-->

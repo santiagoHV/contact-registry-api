@@ -1,58 +1,99 @@
 <h2>Contacto</h2>
-
-<form>
-  <div>
-    <label>
-      Sexo
-      <input name="sex"/>
-    </label>
-    <label>Fecha de nacimiento</label>
-    <input type="date" name="birthdate"/>
-  </div>
-  <div>
-    <label>Nombre</label>
-    <input name="name"/>
-    <label>Apellido</label>
-    <input name="lastname"/>
-  </div>
-  <div>
-    <label>Correo</label>
-    <input name="email"/>
-    <label>Direccion</label>
-    <input name="address"/>
-  </div>
-  <div>
-    <label>Casa/apartamento</label>
-    <input name="address_detail"/>
-    <label>Pais</label>
-    <%= select_tag 'country',
-                   options_for_select(@countries.map { |c| [c.name, c.id] }),
-                   prompt: 'Select Country',
-                   id: 'country_select',
-                   name: 'country_id'
-    %>
-  </div>
-  <div>
-    <label>Estado</label>
-    <%= select_tag 'state', '',
-                   prompt: 'Select State',
-                   id: 'state_select',
-                   disabled: true,
-                   name: 'state_id'
-    %>
-    <label>Ciudad</label>
-    <%= select_tag 'city', '',
-                   prompt: 'Select City',
-                   id: 'city_select',
-                   disabled: true,
-                   name: 'city_id'
-    %>
-  </div>
-  <label>Descripcion</label>
-  <input name="description"/>
-
-  <button type="button" onclick="onSubmit()">Enviar</button>
-</form>
+<div class="container">
+  <form>
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="sex-input">Sexo</label>
+          <select class="form-control" name="sex" id="sex-input">
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+            <option value="N/A">No especifica</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="birthdate-input">Fecha de nacimiento</label>
+          <input type="date" name="birthdate" id="birthdate-input" class="form-control"/>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="name-input">Nombre</label>
+          <input name="name" id="name-input" class="form-control"/>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="lastname-input">Apellido</label>
+          <input name="lastname" id="lastname-input" class="form-control"/>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="email-input">Correo</label>
+          <input name="email" type="email" id="email-input" class="form-control" />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="address-input">Direccion</label>
+          <input name="address" id="address-input" class="form-control"/>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="detail-input">Casa/apartamento</label>
+          <input name="address_detail" id="detail-input" class="form-control"/>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="country_select">Pais</label>
+          <%= select_tag 'country',
+                         options_for_select(@countries.map { |c| [c.name, c.id] }),
+                         prompt: 'Select Country',
+                         id: 'country_select',
+                         name: 'country_id',
+                         class: 'form-control'
+          %>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="state_select">Estado</label>
+          <%= select_tag 'state', '',
+                         prompt: 'Select State',
+                         id: 'state_select',
+                         disabled: true,
+                         name: 'state_id',
+                         class: 'form-control'
+          %>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="city_select">Ciudad</label>
+          <%= select_tag 'city', '',
+                         prompt: 'Select City',
+                         id: 'city_select',
+                         disabled: true,
+                         name: 'city_id',
+                         class: 'form-control'
+          %>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-group">
+          <label for="desc-input">Descripcion</label>
+          <textarea name="description" class="form-control" id="desc-input" type="textarea"></textarea>
+        </div>
+      </div>
+      <button class="btn btn-primary mt-3" type="button" onclick="onSubmit()">Enviar</button>
+    </div>
+  </form>
+</div>
 
 
 

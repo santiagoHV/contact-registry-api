@@ -2,7 +2,7 @@ class ContactsService
   #TODO: Implement repository pattern?
 
   def get_contacts
-    Contact.all
+    Contact.includes(:city).all
   end
 
   def get_contact(id)

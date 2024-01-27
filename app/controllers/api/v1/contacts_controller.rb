@@ -81,6 +81,6 @@ class Api::V1::ContactsController < ApplicationController
     render json: {error: e.message}, status: :unprocessable_entity
   end
   def contact_params
-    params.require(:contact).permit(:name, :email, :birthdate, :address, :address_detail, :city_id)
+    params.require(:contact).permit(:name, :lastname, :sex, :email, :birthdate, :address, :address_detail, :description, :city_id)
   end
 end
