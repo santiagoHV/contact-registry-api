@@ -12,6 +12,9 @@
 <h1>Contactos Agrupados por Ciudad</h1>
 
 <% @grouped_contacts.each do |city_group| %>
+  <% if city_group[:contacts].empty? %>
+
+  <% else %>
   <h2><%= city_group[:city] %></h2>
   <table class="table table-striped">
     <thead>
@@ -35,6 +38,7 @@
       </tr>
     <% end %>
   </table>
+  <% end %>
 <% end %>
 
 </body>

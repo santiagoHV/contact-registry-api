@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_27_000219) do
     t.bigint "state_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["state_id"], name: "index_cities_on_state_id"
+    t.indes ["state_id"], name: "index_cities_on_state_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -34,7 +34,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_27_000219) do
     t.string "sex", default: "N/A", null: false
     t.string "lastname", default: "N/A", null: false
     t.string "description", default: "N/A", null: false
-    t.index ["city_id"], name: "index_contacts_on_city_id"
+    t.indes ["city_id"], name: "index_contacts_on_city_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -50,7 +50,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_27_000219) do
     t.bigint "country_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["country_id"], name: "index_states_on_country_id"
+    t.indes ["country_id"], name: "index_states_on_country_id"
   end
 
   add_foreign_key "cities", "states"
