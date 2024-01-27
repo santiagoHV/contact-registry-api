@@ -28,7 +28,7 @@ The app is made with Ruby on Rails, PostgreSQL and Docker.
    ```
 4. Change database.yml file with local host and if you want to change the user and password:
    ```bash
-   host: localhost # Is a must in local instalation with docker
+   host: localhost # Is a must in local instalation without docker
    username: user
    password: password
    ```
