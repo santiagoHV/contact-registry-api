@@ -1,0 +1,257 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+tags:
+  - name: Countries
+    description: countries
+  - name: States
+    description: states
+  - name: Cities
+    description: cities
+  - name: Contacts
+    description: contacts
+paths:
+  "/api/v1/cities":
+    get:
+      tags:
+        - Cities
+      summary: list cities
+      responses:
+        '200':
+          description: successful
+    post:
+      tags:
+          - Cities
+      summary: create city
+      responses:
+        '200':
+          description: successful
+  "/api/v1/cities/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+          - Cities
+      summary: show city
+      responses:
+        '200':
+          description: successful
+    patch:
+      tags:
+          - Cities
+      summary: update city
+      responses:
+        '200':
+          description: successful
+    put:
+      tags:
+        - Cities
+      summary: update city
+      responses:
+        '200':
+          description: successful
+    delete:
+      tags:
+        - Cities
+      summary: delete city
+      responses:
+        '200':
+          description: successful
+  "/api/v1/contacts":
+    get:
+      tags:
+        - Contacts
+      summary: list contacts
+      responses:
+        '200':
+          description: successful
+    post:
+      tags:
+        - Contacts
+      summary: create contact
+      responses:
+        '200':
+          description: successful
+  "/api/v1/contacts/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+        - Contacts
+      summary: show contact
+      responses:
+        '200':
+          description: successful
+    patch:
+      tags:
+        - Contacts
+      summary: update contact
+      responses:
+        '200':
+          description: successful
+    put:
+      tags:
+        - Contacts
+      summary: update contact
+      responses:
+        '200':
+          description: successful
+    delete:
+      tags:
+        - Contacts
+      summary: delete contact
+      responses:
+        '200':
+          description: successful
+  "/api/v1/countries/details":
+    get:
+      tags:
+        - Countries
+      summary: countries_with_details country
+      responses:
+        '200':
+          description: successful
+  "/api/v1/countries/{id}/states":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+        - Countries
+      summary: get_states country
+      responses:
+        '200':
+          description: successful
+  "/api/v1/countries":
+    get:
+      tags:
+        - Countries
+      summary: list countries
+      responses:
+        '200':
+          description: successful
+    post:
+      tags:
+        - Countries
+      summary: create country
+      responses:
+        '200':
+          description: successful
+  "/api/v1/countries/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+        - Countries
+      summary: show country
+      responses:
+        '200':
+          description: successful
+    patch:
+      tags:
+        - Countries
+      summary: update country
+      responses:
+        '200':
+          description: successful
+    put:
+      tags:
+        - Countries
+      summary: update country
+      responses:
+        '200':
+          description: successful
+    delete:
+      tags:
+        - Countries
+      summary: delete country
+      responses:
+        '200':
+          description: successful
+  "/api/v1/states/{id}/cities":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+        - Cities
+      summary: get_cities state
+      responses:
+        '200':
+          description: successful
+  "/api/v1/states":
+    get:
+      tags:
+        - States
+      summary: list states
+      responses:
+        '200':
+          description: successful
+    post:
+      tags:
+          - States
+      summary: create state
+      responses:
+        '200':
+          description: successful
+  "/api/v1/states/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+        - States
+      summary: show state
+      responses:
+        '200':
+          description: successful
+    patch:
+      tags:
+        - States
+      summary: update state
+      responses:
+        '200':
+          description: successful
+    put:
+      tags:
+        - States
+      summary: update state
+      responses:
+        '200':
+          description: successful
+    delete:
+      tags:
+        - States
+      summary: delete state
+      responses:
+        '200':
+          description: successful

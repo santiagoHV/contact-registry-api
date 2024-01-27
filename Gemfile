@@ -9,7 +9,8 @@ gem "rails", "~> 7.1.3"
 gem "sprockets-rails"
 
 gem 'pg'
-
+gem 'rswag-api'
+gem 'rswag-ui'
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 
@@ -44,6 +45,8 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
+  gem 'rspec-rails'
+  gem 'rswag-specs'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
 end
