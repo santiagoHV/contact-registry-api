@@ -10,6 +10,18 @@ class Api::V1::StatesController < ApplicationController
     render json: {error: e.message}, status: :internal_server_error
   end
 
+  def get_cities
+    state = @states_service.get_state(params[:id])
+    if state
+      render json: state.cities, status: :ok
+    else
+      render json: {error: "State not found"}, status: :not_found
+    end
+
+  rescue StandardError => e
+    render json: {error: e.message}, status: :internal_server_error
+  end
+
   def show
     state = @states_service.get_state(params[:id])
     if state

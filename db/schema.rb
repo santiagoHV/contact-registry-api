@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_25_195310) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_27_000219) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_25_195310) do
     t.bigint "city_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "sex", default: "N/A", null: false
+    t.string "lastname", default: "N/A", null: false
+    t.string "description", default: "N/A", null: false
     t.index ["city_id"], name: "index_contacts_on_city_id"
   end
 
@@ -38,11 +41,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_25_195310) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state_nomenclature"
+    t.string "phone_code"
   end
 
   create_table "states", force: :cascade do |t|
     t.string "name"
-    t.string "nomenclature"
     t.bigint "country_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

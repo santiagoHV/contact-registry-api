@@ -13,6 +13,39 @@ class Api::V1::CountriesController < ApplicationController
     render json: {error: e.message}, status: :internal_server_error
   end
 
+  def countries_with_details
+    countries_data = @countries_service.get_countries_and_cities
+
+    response = countries_data.as_json(
+      include: {
+        states: {
+          include: {
+            cities: {
+              except: [:created_at, :updated_at, :state_id],
+            }
+          },
+          except: [:created_at, :updated_at, :country_id]
+        }
+      },
+      except: [:created_at, :updated_at]
+    )
+
+    render json: response, status: :ok
+  rescue StandardError => e
+    render json: {error: e.message}, status: :internal_server_error
+  end
+
+  def get_states
+    country = @countries_service.get_country(params[:id])
+    if country
+      render json: country.states, status: :ok
+    else
+      render json: {error: "Country not found"}, status: :not_found
+    end
+
+  rescue StandardError => e
+    render json: {error: e.message}, status: :internal_server_error
+  end
   def show
     country = @countries_service.get_country(params[:id])
     if country
@@ -80,7 +113,7 @@ class Api::V1::CountriesController < ApplicationController
   end
 
   def country_params
-    params[:country].permit(:name)
+    params[:country].permit(:name, :phone_code, :state_nomenclature)
   end
 
 end

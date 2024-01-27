@@ -1,6 +1,9 @@
-class ContactsController
+class Api::V1::ContactsController < ApplicationController
   #TODO: remove this line when configure CORS or use in production
   skip_before_action :verify_authenticity_token
+
+  before_action :validate_params, only: [:create, :update]
+
   def initialize
     @contacts_service = ContactsService.new
   end
@@ -23,8 +26,8 @@ class ContactsController
     render json: {error: e.message}, status: :internal_server_error
   end
 
-  def create(contact_data)
-    data = contact_data
+  def create
+    data = contact_params
     city_id = data[:city_id]
 
     contact = @contacts_service.create_contact(data, city_id)
@@ -41,8 +44,9 @@ class ContactsController
     render json: {error: e.message}, status: :internal_server_error
   end
 
-  def update(id, contact_data)
-    data = contact_data
+  def update
+    data = contact_params
+    id = params[:id]
 
     contact = @contacts_service.update_contact(id, data)
 

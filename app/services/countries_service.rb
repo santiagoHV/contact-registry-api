@@ -4,6 +4,10 @@ class CountriesService
     Country.all
   end
 
+  def get_countries_and_cities
+    Country.includes(states: :cities).all
+  end
+
   def get_country(id)
     Country.find(id)
 

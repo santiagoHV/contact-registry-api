@@ -5,6 +5,14 @@ class StatesService
     State.all
   end
 
+  def get_states_by_country(country_name)
+    country = Country.find_by(name: country_name)
+
+    raise ArgumentError.new("Country not found") unless country
+
+    country.states
+  end
+
   def get_state(id)
     State.find(id)
 

@@ -17,6 +17,9 @@ class ContactsService
 
     raise ArgumentError.new("City not found") unless city
 
+    puts "city: #{city.inspect}"
+    puts "contact_data: #{contact_data.inspect}"
+
     existing_contact = Contact.find_by(name: contact_data[:name])
 
     if existing_contact
