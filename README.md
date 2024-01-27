@@ -26,24 +26,31 @@ The app is made with Ruby on Rails, PostgreSQL and Docker.
    ```bash
    bundle install
    ```
-4. Create database:
+4. Change database.yml file with local host and if you want to change the user and password:
+   ```bash
+   host: localhost # Is a must in local instalation with docker
+   username: user
+   password: password
+   ```
+
+5. Create database:
    ```bash
     rails db:create
     ```
-5. Run migrations:
+6. Run migrations:
     ```bash
      rails db:migrate
      ```
-6. If you want to populate the database with some data (countries,states and cities), run:
+7. If you want to populate the database with some data (countries,states and cities), run:
    ```bash
    rails db:seed
    ```
    
-7. Run server:
+8. Run server:
    ```bash
     rails s
     ```
-8. Open your browser and go to:
+9. Open your browser and go to:
     ```bash
      http://localhost:3000/
      ```
@@ -56,24 +63,31 @@ The app is made with Ruby on Rails, PostgreSQL and Docker.
    git clone https://github.com/santiagoHV/contact-registry-api.git
    cd contact-registry-api
     
-2. Build the image:
+2. Create a .env file in the root of the project and add the following variables:
+    ```bash
+    POSTGRES_USER=user
+    POSTGRES_PASSWORD=password
+    POSTGRES_DB=postgres_db
+    ```  
+   
+3. Build the image:
     ```bash
     docker-compose build
     ```
-3. Run the container:
+4. Run the container:
     ```bash
-    docker-compose up
+    docker-compose up -d
     ```
 
-4. Run migrations:
+5. Run migrations:
     ```bash
      docker-compose run web rails db:migrate
      ```
-5. If you want to populate the database with some data (countries,states and cities), run:
+6. If you want to populate the database with some data (countries,states and cities), run:
     ```bash
     docker-compose run web rails db:seed
     ```
-6. Open your browser and go to:
+7. Open your browser and go to:
     ```bash
      http://localhost:3000/
      ```
